@@ -338,3 +338,13 @@ Start importing Assets/Prefabs/Trap.prefab using Guid(493713ee0703f4d19ab360b13d
  -> (artifact id: 'f936772057fb6cc7df836d945f4fbefc') in 0.004469 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 611.470886 seconds.
+  path: Assets/Materials/trap.mat
+  artifactKey: Guid(d54aac73b64e74269b6e2f89379c1f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/trap.mat using Guid(d54aac73b64e74269b6e2f89379c1f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 10 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 10 workers.
+ -> (artifact id: 'd7cef07852847d56391536af1c18e538') in 0.006028 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
