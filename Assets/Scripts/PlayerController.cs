@@ -6,6 +6,33 @@ public class PlayerController : MonoBehaviour
 {
 	public float speed;
 	public Rigidbody rb;
+	private int score;
+
+
+	// ***** Method 3  | Winner ****************************
+
+	void Start()
+	{
+		score = 0;
+	}
+	void FixedUpdate()
+	{
+		var xAxis = Input.GetAxis("Horizontal");
+		var zAxis = Input.GetAxis("Vertical");
+
+		var movementVector = new Vector3(xAxis, 0, zAxis);
+		rb.AddForce(movementVector * speed);
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Pickup"))
+		{
+			score++;
+			Debug.Log("Score: "+ score);
+			Destroy(other.gameObject);
+		}
+	}
 
 	// ***** Method 1 ****************************
 	// void FixedUpdate()
@@ -53,13 +80,4 @@ public class PlayerController : MonoBehaviour
 	// }
 
 
-	// ***** Method 3  | Winner ****************************
-	void FixedUpdate()
-	{
-		var xAxis = Input.GetAxis("Horizontal");
-		var zAxis = Input.GetAxis("Vertical");
-
-		var movementVector = new Vector3(xAxis, 0, zAxis);
-		rb.AddForce(movementVector * speed);
-	}
 }
