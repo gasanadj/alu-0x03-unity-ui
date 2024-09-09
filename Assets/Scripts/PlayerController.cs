@@ -7,13 +7,14 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	public Rigidbody rb;
 	private int score;
-
+	public int health;
 
 	// ***** Method 3  | Winner ****************************
 
 	void Start()
 	{
 		score = 0;
+		health = 5;
 	}
 	void FixedUpdate()
 	{
@@ -31,6 +32,12 @@ public class PlayerController : MonoBehaviour
 			score++;
 			Debug.Log("Score: "+ score);
 			Destroy(other.gameObject);
+		}
+
+		if (other.gameObject.CompareTag("Trap"))
+		{
+			health--;
+			Debug.Log("Health: " + health);
 		}
 	}
 
