@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	public int health;
     public Text scoreText;
     public Text healthText;
+    public GameObject status;
 
     // ***** Method 3  | Winner ****************************
 
@@ -19,7 +20,8 @@ public class PlayerController : MonoBehaviour
 	{
 		score = 0;
 		health = 5;
-	}
+        status.gameObject.SetActive(false);
+    }
 	void FixedUpdate()
 	{
 		var xAxis = Input.GetAxis("Horizontal");
@@ -41,13 +43,16 @@ public class PlayerController : MonoBehaviour
 		if (other.gameObject.CompareTag("Trap"))
 		{
 			health--;
-            SetHealthText();
+			SetHealthText();
 		}
 
 		if (other.gameObject.CompareTag("Goal"))
 		{
-			Debug.Log("You win");
-		}
+            status.SetActive(true);
+            status.GetComponent<Image>().color = Color.green;
+            status.GetComponentInChildren<Text>().text = "You Win!";
+            status.GetComponentInChildren<Text>().color = Color.black;
+        }
 	}
 
     void Update()
@@ -55,10 +60,11 @@ public class PlayerController : MonoBehaviour
         // Check if health is zero or less
         if (health <= 0)
         {
-            Debug.Log("Game Over!");
+            status.SetActive(true);
+            status.GetComponentInChildren<Text>().text = "Game Over!";
 
             // Call the ReloadScene method to handle scene reloading and resetting
-            ReloadScene();
+            StartCoroutine(LoadScene(3));
         }
     }
 
@@ -78,6 +84,11 @@ public class PlayerController : MonoBehaviour
         healthText.text = "Health: " + health.ToString();
     }
 
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        ReloadScene();
+    }
     // ***** Method 1 ****************************
     // void FixedUpdate()
     // {
