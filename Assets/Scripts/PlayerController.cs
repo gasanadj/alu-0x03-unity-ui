@@ -66,6 +66,12 @@ public class PlayerController : MonoBehaviour
             // Call the ReloadScene method to handle scene reloading and resetting
             StartCoroutine(LoadScene(3));
         }
+
+        // Menu scene
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("menu");
+            }
     }
 
     private void ReloadScene()
