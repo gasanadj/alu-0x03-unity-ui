@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviour
 {
 	public float speed = 100f;
 	public Rigidbody rb;
 	private int score;
 	public int health;
+    public Text scoreText;
 
     // ***** Method 3  | Winner ****************************
 
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
 		if (other.gameObject.CompareTag("Pickup"))
 		{
 			score++;
-			Debug.Log("Score: "+ score);
+            SetScoreText();
 			Destroy(other.gameObject);
 		}
 
@@ -62,6 +65,11 @@ public class PlayerController : MonoBehaviour
     {
         // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void SetScoreText()
+    {
+        scoreText.text = "Score: "+ score.ToString();
     }
 
     // ***** Method 1 ****************************
