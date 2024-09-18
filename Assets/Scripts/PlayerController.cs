@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	private int score;
 	public int health;
     public Text scoreText;
+    public Text healthText;
 
     // ***** Method 3  | Winner ****************************
 
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 		if (other.gameObject.CompareTag("Trap"))
 		{
 			health--;
-			Debug.Log("Health: " + health);
+            SetHealthText();
 		}
 
 		if (other.gameObject.CompareTag("Goal"))
@@ -70,6 +71,11 @@ public class PlayerController : MonoBehaviour
     void SetScoreText()
     {
         scoreText.text = "Score: "+ score.ToString();
+    }
+
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + health.ToString();
     }
 
     // ***** Method 1 ****************************
